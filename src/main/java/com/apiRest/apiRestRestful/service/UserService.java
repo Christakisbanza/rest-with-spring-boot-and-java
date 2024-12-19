@@ -30,4 +30,9 @@ public class UserService {
     public List<User> getAll(){
         return userRepository.findAll();
     }
+
+    @Transactional
+    public void deleteById(Long id){
+        userRepository.deleteById(id);
+    }
 }

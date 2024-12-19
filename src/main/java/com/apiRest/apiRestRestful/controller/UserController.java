@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/users")
+@RequestMapping("api/v1/users")
 public class UserController {
 
     @Autowired
@@ -36,5 +36,11 @@ public class UserController {
     public ResponseEntity<List<User>> getAll(){
         List<User> users = userService.getAll();
         return ResponseEntity.ok().body(users);
+    }
+
+    @DeleteMapping("{id}")
+    public ResponseEntity<Void> deleteById(@PathVariable Long id){
+        userService.deleteById(id);
+        return ResponseEntity.ok().build();
     }
 }

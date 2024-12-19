@@ -1,13 +1,11 @@
 package com.apiRest.apiRestRestful.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.io.Serializable;
 
 @Entity
+@Table(name = "users")
 public class User implements Serializable {
 
     @Id
