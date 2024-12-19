@@ -11,8 +11,14 @@ public class User implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(nullable = false, length = 55)
     private String name;
+
+    @Column(nullable = false, length = 55)
     private String email;
+
+    @Column(nullable = false, length = 11)
     private String cpf;
 
     public User() {
