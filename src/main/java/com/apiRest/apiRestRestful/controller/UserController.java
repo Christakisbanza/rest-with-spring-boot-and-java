@@ -6,7 +6,7 @@ import com.apiRest.apiRestRestful.entity.User;
 import com.apiRest.apiRestRestful.entity.dto.UserResponseDto;
 import com.apiRest.apiRestRestful.entity.dto.UserSaveDto;
 import com.apiRest.apiRestRestful.entity.dto.UserUpdateDto;
-import com.apiRest.apiRestRestful.mapper.DozerMapper;
+import com.apiRest.apiRestRestful.mapper.Mapper;
 import com.apiRest.apiRestRestful.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -24,20 +24,20 @@ public class UserController {
 
     @PostMapping
     public ResponseEntity<UserResponseDto> save(@RequestBody UserSaveDto userSaveDto){
-        User user = userService.save(DozerMapper.parseObj(userSaveDto, User.class));
-        return ResponseEntity.status(HttpStatus.CREATED).body(DozerMapper.parseObj(user, UserResponseDto.class));
+        User user = userService.save(Mapper.parseObj(userSaveDto, User.class));
+        return ResponseEntity.status(HttpStatus.CREATED).body(Mapper.parseObj(user, UserResponseDto.class));
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<UserResponseDto> getById(@PathVariable Long id){
         User user = userService.getById(id);
-        return ResponseEntity.ok().body(DozerMapper.parseObj(user,UserResponseDto.class));
+        return ResponseEntity.ok().body(Mapper.parseObj(user,UserResponseDto.class));
     }
 
     @GetMapping
     public ResponseEntity<List<UserResponseDto>> getAll(){
         List<User> users = userService.getAll();
-        return ResponseEntity.ok().body(DozerMapper.parseListObjs(users, UserResponseDto.class));
+        return ResponseEntity.ok().body(Mapper.parseListObjs(users, UserResponseDto.class));
     }
 
     @DeleteMapping("{id}")
@@ -49,6 +49,6 @@ public class UserController {
     @PutMapping
     public ResponseEntity<UserResponseDto> update(@RequestBody UserUpdateDto userUpdateDto){
         User user = userService.update(UserUpdateDto.toUser(userUpdateDto));
-        return ResponseEntity.ok().body(DozerMapper.parseObj(user, UserResponseDto.class));
+        return ResponseEntity.ok().body(Mapper.parseObj(user, UserResponseDto.class));
     }
 }
