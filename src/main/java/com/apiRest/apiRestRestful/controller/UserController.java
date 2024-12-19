@@ -5,6 +5,7 @@ package com.apiRest.apiRestRestful.controller;
 import com.apiRest.apiRestRestful.entity.User;
 import com.apiRest.apiRestRestful.entity.dto.UserResponseDto;
 import com.apiRest.apiRestRestful.entity.dto.UserSaveDto;
+import com.apiRest.apiRestRestful.entity.dto.UserUpdateDto;
 import com.apiRest.apiRestRestful.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -42,5 +43,11 @@ public class UserController {
     public ResponseEntity<Void> deleteById(@PathVariable Long id){
         userService.deleteById(id);
         return ResponseEntity.ok().build();
+    }
+
+    @PutMapping
+    public ResponseEntity<UserResponseDto> update(@RequestBody UserUpdateDto userUpdateDto){
+        User user = userService.update(UserUpdateDto.toUser(userUpdateDto));
+        return ResponseEntity.ok().body(UserResponseDto.toDto(user));
     }
 }

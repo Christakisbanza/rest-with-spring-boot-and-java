@@ -35,4 +35,15 @@ public class UserService {
     public void deleteById(Long id){
         userRepository.deleteById(id);
     }
+
+    @Transactional
+    public User update(User newUser){
+        User oldUser = getById(newUser.getId());
+
+        oldUser.setName(newUser.getName());
+        oldUser.setEmail(newUser.getEmail());
+        oldUser.setCpf(newUser.getCpf());
+
+        return userRepository.save(oldUser);
+    }
 }
