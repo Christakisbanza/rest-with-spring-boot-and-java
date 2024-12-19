@@ -7,9 +7,10 @@ spring:
     username: developer
     password: 1234567
   jpa:
+    open-in-view: false
     hibernate:
       ddl-auto: update
     properties:
       hibernate:
-        dialect: org.hibernate.dialect.MySQL8Dialect
+        format_sql: false
     show-sql: false

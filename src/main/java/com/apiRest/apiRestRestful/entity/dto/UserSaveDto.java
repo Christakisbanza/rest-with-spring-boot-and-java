@@ -30,13 +30,6 @@ public class UserSaveDto {
         this.cpf = cpf;
     }
 
-    public static User toUser(UserSaveDto userSaveDto){
-        return new User(
-                userSaveDto.getName(),
-                userSaveDto.getEmail(),
-                userSaveDto.getCpf()
-        );
-    }
 
     public String getName() {
         return name;

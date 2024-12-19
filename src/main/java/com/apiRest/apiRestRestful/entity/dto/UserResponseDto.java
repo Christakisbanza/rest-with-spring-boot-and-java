@@ -2,27 +2,28 @@ package com.apiRest.apiRestRestful.entity.dto;
 
 import com.apiRest.apiRestRestful.entity.User;
 
-import java.util.ArrayList;
-import java.util.List;
 
 public class UserResponseDto {
 
+    private Long id;
     private String name;
     private String email;
 
     public UserResponseDto() {
     }
 
-    public UserResponseDto(String name, String email) {
+    public UserResponseDto(Long id,String name, String email) {
+        this.id = id;
         this.name = name;
         this.email = email;
     }
 
-    public static UserResponseDto toDto (User user){
-        return new UserResponseDto(
-                user.getName(),
-                user.getEmail()
-        );
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {
